@@ -24,7 +24,7 @@ function AdminPanel() {
   const updateStatus = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:5001/api/tickets/status/${id}`,
+        `http://localhost:5001/api/tickets/${id}`,
         { status },
         { headers: { Authorization: token } }
       );
