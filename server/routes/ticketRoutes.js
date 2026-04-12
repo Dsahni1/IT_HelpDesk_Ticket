@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Ticket = require("../models/Ticket");
 const authMiddleware = require("../middleware/authMiddleware");
+const adminMiddleware = require("../middleware/adminMiddleware");
 
 // Create Ticket
 router.post("/", authMiddleware, async (req, res) => {
@@ -16,6 +17,18 @@ router.post("/", authMiddleware, async (req, res) => {
     });
 
     res.status(201).json(ticket);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.get("/all", authMiddleware, adminMiddleware, async (req, res) => {
+  try {
+    const tickets = await Ticket.find()
+      .populate("createdBy", "name email")
+      .populate("assignedTo", "name email");
+
+    res.json(tickets);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
