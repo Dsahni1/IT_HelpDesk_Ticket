@@ -52,7 +52,8 @@ router.put("/:id", authMiddleware, async (req, res) => {
     const ticket = await Ticket.findByIdAndUpdate(
       req.params.id,
       { status },
-      { new: true }
+    //   { new: true }
+        { returnDocument: "after" }
     );
 
     res.json(ticket);
