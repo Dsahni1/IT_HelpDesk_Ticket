@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+
 function AdminPanel() {
   const [tickets, setTickets] = useState([]);
   const token = localStorage.getItem("token");
@@ -20,6 +21,11 @@ function AdminPanel() {
     fetchAllTickets();
   }, []);
 
+  const handleLogout = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("role");
+  window.location.href = "/";
+    };
   // Update status
   const updateStatus = async (id, status) => {
     try {
@@ -34,11 +40,21 @@ function AdminPanel() {
       console.log(err);
     }
   };
+    const total = tickets.length;
+    const open = tickets.filter(t => t.status === "Open").length;
+    const inProgress = tickets.filter(t => t.status === "In Progress").length;
+    const resolved = tickets.filter(t => t.status === "Resolved").length;
 
   return (
     <div>
+    <button onClick={handleLogout}>Logout</button>
       <h2>Admin Panel</h2>
-
+        <div style={{ display: "flex", gap: "20px", marginBottom: "20px" }}>
+        <div><b>Total:</b> {total}</div>
+        <div><b>Open:</b> {open}</div>
+        <div><b>In Progress:</b> {inProgress}</div>
+        <div><b>Resolved:</b> {resolved}</div>
+</div>
       {tickets.map((ticket) => (
         <div key={ticket._id} style={{ border: "1px solid black", margin: "10px" }}>
           <p><b>{ticket.title}</b></p>
@@ -60,5 +76,6 @@ function AdminPanel() {
     </div>
   );
 }
+
 
 export default AdminPanel;
