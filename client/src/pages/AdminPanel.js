@@ -46,25 +46,39 @@ function AdminPanel() {
     const resolved = tickets.filter(t => t.status === "Resolved").length;
 
   return (
-    <div>
-    <button onClick={handleLogout}>Logout</button>
-      <h2>Admin Panel</h2>
-        <div style={{ display: "flex", gap: "20px", marginBottom: "20px" }}>
-        <div><b>Total:</b> {total}</div>
-        <div><b>Open:</b> {open}</div>
-        <div><b>In Progress:</b> {inProgress}</div>
-        <div><b>Resolved:</b> {resolved}</div>
-</div>
+    <div style={{ padding: "20px", fontFamily: "Arial" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <h2>Admin Panel</h2>
+            <button onClick={handleLogout}>Logout</button>
+        </div>    
+
+        <div style={{display: "flex", gap: "20px", margin: "20px 0"}}>
+        <div style={{ padding: "10px", border: "1px solid #ccc", borderRadius: "8px" }}>
+            <b>Total:</b> {total}
+        </div>
+        <div style={{ padding: "10px", border: "1px solid #ccc", borderRadius: "8px" }}>
+            <b>Open:</b> {open}
+        </div>
+        <div style={{ padding: "10px", border: "1px solid #ccc", borderRadius: "8px" }}>
+            <b>In Progress:</b> {inProgress}
+        </div>
+        <div style={{ padding: "10px", border: "1px solid #ccc", borderRadius: "8px" }}>
+            <b>Resolved:</b> {resolved}
+        </div>
+    </div>
+    
       {tickets.map((ticket) => (
-        <div key={ticket._id} style={{ border: "1px solid black", margin: "10px" }}>
+
+        <div key={ticket._id} style={{border: "1px solid #ccc",borderRadius: "10px",padding: "15px",marginBottom: "10px",boxShadow: "0 2px 5px rgba(0,0,0,0.1)"}}>
           <p><b>{ticket.title}</b></p>
           <p>{ticket.description}</p>
-          <p>Status: {ticket.status}</p>
+          <p style={{color:ticket.status === "Resolved" ? "green" :ticket.status === "In Progress" ? "orange" :"red"}}>Status: {ticket.status}</p>
           <p>Priority: {ticket.priority}</p>
           <p>User: {ticket.createdBy?.email}</p>
 
           {/* Update buttons */}
-          <button onClick={() => updateStatus(ticket._id, "In Progress")}>
+          {/* <button onClick={() => updateStatus(ticket._id, "In Progress")}> */}
+          <button style={{ marginRight: "10px" }} onClick={() => updateStatus(ticket._id, "In Progress")}>
             In Progress
           </button>
 
