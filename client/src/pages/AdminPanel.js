@@ -6,7 +6,7 @@ function AdminPanel() {
   const [tickets, setTickets] = useState([]);
   const token = localStorage.getItem("token");
 
-  useEffect(()=>{
+//   useEffect(()=>{
   const fetchAllTickets = async () => {
     try {
       const res = await axios.get("https://it-helpdesk-ticket-backend.onrender.com/api/tickets/all", {
@@ -18,7 +18,7 @@ function AdminPanel() {
     }
   };
 
-
+  useEffect(()=>{
     fetchAllTickets();
   }, [token]);
 

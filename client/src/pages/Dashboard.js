@@ -11,20 +11,20 @@ function Dashboard() {
   const token = localStorage.getItem("token");
 
   // Fetch tickets
-  useEffect(()=>{
   const fetchTickets = async () => {
-    try {
-      const res = await axios.get("https://it-helpdesk-ticket-backend.onrender.com/api/tickets", {
-        headers: { Authorization: token }
-      });
-      setTickets(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+      try {
+          const res = await axios.get("https://it-helpdesk-ticket-backend.onrender.com/api/tickets", {
+              headers: { Authorization: token }
+            });
+            setTickets(res.data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-
     
+    
+    useEffect(()=>{
     fetchTickets();
     },[token]);
 
