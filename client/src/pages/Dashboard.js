@@ -11,6 +11,7 @@ function Dashboard() {
   const token = localStorage.getItem("token");
 
   // Fetch tickets
+  useEffect(()=>{
   const fetchTickets = async () => {
     try {
       const res = await axios.get("https://it-helpdesk-ticket-backend.onrender.com/api/tickets", {
@@ -23,9 +24,9 @@ function Dashboard() {
   };
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    useEffect(() => {
-        fetchTickets();
-    }, []);
+    
+    fetchTickets();
+    },[token]);
 
   // Create ticket
   const createTicket = async () => {
