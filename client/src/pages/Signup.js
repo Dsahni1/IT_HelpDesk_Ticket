@@ -8,7 +8,7 @@ function Signup() {
 
   const handleSignup = async () => {
     try {
-      await axios.post("http://localhost:5001/api/auth/signup", {
+      await axios.post("https://it-helpdesk-ticket-backend.onrender.com/api/auth/signup", {
         name,
         email,
         password

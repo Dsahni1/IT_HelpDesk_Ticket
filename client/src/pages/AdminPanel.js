@@ -8,7 +8,7 @@ function AdminPanel() {
 
   const fetchAllTickets = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/api/tickets/all", {
+      const res = await axios.get("https://it-helpdesk-ticket-backend.onrender.com/api/tickets/all", {
         headers: { Authorization: token }
       });
       setTickets(res.data);
@@ -30,7 +30,7 @@ function AdminPanel() {
   const updateStatus = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:5001/api/tickets/${id}`,
+        `https://it-helpdesk-ticket-backend.onrender.com/api/tickets/${id}`,
         { status },
         { headers: { Authorization: token } }
       );

@@ -13,7 +13,7 @@ function Dashboard() {
   // Fetch tickets
   const fetchTickets = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/api/tickets", {
+      const res = await axios.get("https://it-helpdesk-ticket-backend.onrender.com/api/tickets", {
         headers: { Authorization: token }
       });
       setTickets(res.data);
@@ -31,7 +31,7 @@ function Dashboard() {
   const createTicket = async () => {
     try {
       await axios.post(
-        "http://localhost:5001/api/tickets",
+        "https://it-helpdesk-ticket-backend.onrender.com/api/tickets",
         { title, description, priority },
         { headers: { Authorization: token } }
       );
