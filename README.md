@@ -4,8 +4,8 @@
 A full-stack IT Helpdesk application where users can create support tickets and admins can manage and resolve them.
 
 ## 🚀 Live Demo
-Frontend: [YOUR VERCEL LINK]  
-Backend: [YOUR RENDER LINK]
+Frontend: https://it-help-desk-ticket.vercel.app/
+Backend: https://it-helpdesk-ticket-backend.onrender.com/
 
 ## 📌 Features
 - User authentication (JWT-based login/signup)
@@ -57,4 +57,4 @@ JWT_SECRET=your_secret_key
 - Email notifications  
 
 ## 👨‍💻 Author
-Dhruv Sa
+Dhruv Sahni
